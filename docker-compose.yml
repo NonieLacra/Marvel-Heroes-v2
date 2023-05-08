@@ -1,0 +1,17 @@
+version: "3.7"
+
+services:
+  angular-app:
+    container_name: marvel-heroes
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - "/app/node_modules"
+      - ".:/app"
+    ports:
+      - "${PORT}:${PORT}"
+    env_file:
+      - .env
+    command: >
+      bash -c "npm run start"
